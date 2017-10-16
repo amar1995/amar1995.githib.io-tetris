@@ -255,7 +255,7 @@ document.addEventListener('keydown',(event)=>{
 	{
 		playerMove(1);
 	}
-	else if(event.keyCode===87)
+	else if(event.keyCode===87 || event.keyCode===38)
 	{
 		playerRotate(player.matrix,1);
 	}
