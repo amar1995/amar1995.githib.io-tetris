@@ -103,11 +103,11 @@ function playerRotate(dir) {
         }
     }
 }
-function lastRowFull(myArena)
+function lastRowFull(myArena,loc)
 {
 	for(let i=0;i<12;i++)
 	{
-		if(myArena[19][i]===0 )
+		if(myArena[loc][i]===0 )
 		{
 			return false;
 		}	
@@ -116,23 +116,25 @@ function lastRowFull(myArena)
 }
 function clearLastRow(myAren)
 {
-	while(true)
+	for(let i=0;i<=19;i++)
 	{
-		if(lastRowFull(myArena))
+		if(lastRowFull(myArena,i))
 		{
 			var newArena = [];
 			var topRow=[];
 			for(let i=0;i<12;i++)
 				topRow.push(0);
 			newArena.push(topRow);
-			for(let i=0;i<19;i++)
-				newArena.push(myArena[i]);
-			
+			for(let j=0;j<i;j++)
+				newArena.push(myArena[j]);
+			for(let j=i+1;j<=19;j++)
+			{
+				newArena.push(myArena[j]);
+			}
 			//drawShape(newArena,{x:0,y:0});
 			updateScore();
 			myArena= newArena;
 		}
-		else break;
 	}
 }
 
